@@ -27,10 +27,55 @@
     options it87 force_id=0x8628
   '';
 
-  # sound.enable = true;
-  hardware.pulseaudio = {
-    # enable = true;
-    support32Bit = true;
+  # # sound.enable = true;
+  # hardware.pulseaudio = {
+  #   # enable = true;
+  #   support32Bit = true;
+  # };
+
+ # rtkit is optional but recommended
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true; # if not already enabled
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+
+    extraLv2Packages = [ pkgs.rnnoise-plugin ];
+    configPackages = [
+      (pkgs.writeTextDir "share/pipewire/pipewire.conf.d/20-rnnoise.conf" ''
+        context.modules = [
+        {   name = libpipewire-module-filter-chain
+            args = {
+                node.description = "Noise Canceling source"
+                media.name = "Noise Canceling source"
+                filter.graph = {
+                    nodes = [
+                        {
+                            type = lv2
+                            name = rnnoise
+                            plugin = "https://github.com/werman/noise-suppression-for-voice#stereo"
+                            label = noise_suppressor_stereo
+                            control = {
+                            }
+                        }
+                    ]
+                }
+                capture.props = {
+                    node.name =  "capture.rnnoise_source"
+                    node.passive = true
+                }
+                playback.props = {
+                    node.name =  "rnnoise_source"
+                    media.class = Audio/Source
+                }
+            }
+        }
+        ]
+      '')
+    ];
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -162,6 +207,8 @@
   };
 
   # services.keyd.enable = true;
+
+  services.flatpak.enable = true;
   
   services.dbus.enable = true;
   xdg.portal = {
@@ -207,15 +254,21 @@
     ];
   };
 
+  # programs.hyprpanel = {
+  #   enable = true;
+  # };
+
   programs.coolercontrol.enable = true;
+
+  programs.steam.enable = true;
 
   programs.zsh = {
     enable = true;
   };
 
-  programs.waybar = {
-    enable = true;
-  };
+  # programs.waybar = {
+  #   enable = true;
+  # };
 
   # Dynamic libraries for unpackaged programs
   programs.nix-ld.dev.enable = true;

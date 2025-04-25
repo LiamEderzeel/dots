@@ -79,7 +79,7 @@
             };
           };
 
-          modules = [./${desktop}/configuration.nix nix-ld.nixosModules.nix-ld];
+          modules = [./${desktop}/configuration.nix nix-ld.nixosModules.nix-ld {nixpkgs.overlays = [inputs.hyprpanel.overlay];}];
 
           # modules = [./nixos/${desktop}/configuration.nix nixos-boot.nixosModules.default];
         };

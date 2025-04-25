@@ -108,6 +108,7 @@ let
     zoxide
     kubernetes-helm
     skaffold
+    hyprpanel
   ];
 in
 {

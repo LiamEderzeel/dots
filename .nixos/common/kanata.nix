@@ -46,10 +46,7 @@
         devices = [
           # Replace the paths below with the appropriate device paths for your setup.
           # Use `ls /dev/input/by-path/` to find your keyboard devices.
-          "/dev/input/by-path/pci-0000:09:00.3-usb-0:3:1.0-event-kbd"   
-          # "/dev/input/by-path/pci-0000:09:00.3-usbv2-0:3:1.0-event-kbd"
-          # "/dev/input/by-path/pci-0000:09:00.3-usbv2-0:4:1.2-event-mouse"
-          # "/dev/input/by-path/pci-0000:09:00.3-usb-0:4:1.2-event-mouse"  
+          "/dev/input/by-path/pci-0000:09:00.3-usb-0:2:1.0-event-kbd" # ergodox
         ];
         extraDefCfg = "process-unmapped-keys yes";
         config = ''

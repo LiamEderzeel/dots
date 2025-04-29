@@ -72,6 +72,14 @@ return {
     event = "VeryLazy",
     opts = {
       -- add any options here
+      lsp = {
+        hover = {
+          enabled = false,
+        },
+        signature = {
+          enabled = false,
+        },
+      },
     },
     presets = {
       bottom_search = true, -- use a classic bottom cmdline for search

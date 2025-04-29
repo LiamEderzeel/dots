@@ -10,6 +10,10 @@
     tmux-booster = {
       url = "github:LiamEderzeel/tmux-booster";
     };
+    zen-browser = {
+      url = "github:MarceColl/zen-browser-flake";
+    };
+    hyprpanel.url = "github:jas-singhfsu/hyprpanel";
   };
   outputs = {
     self,
@@ -17,7 +21,6 @@
     nixpkgs-unstable,
     proxmox-nixos,
     nix-ld,
-    tmux-booster,
   # nixos-boot,
     ...
   } @ inputs: let

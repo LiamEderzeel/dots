@@ -47,6 +47,7 @@
           # Replace the paths below with the appropriate device paths for your setup.
           # Use `ls /dev/input/by-path/` to find your keyboard devices.
           "/dev/input/by-path/pci-0000:09:00.3-usb-0:2:1.0-event-kbd" # ergodox
+          "/dev/input/by-path/pci-0000:09:00.3-usb-0:3:1.0-event-kbd" # keycron
         ];
         extraDefCfg = "process-unmapped-keys yes";
         config = ''
@@ -59,7 +60,7 @@
         )
         
         (defalias
-          escctrl (tap-hold 100 100 esc lctl)
+          escctrl (tap-hold $tap-time $hold-time esc lctl)
           a (multi f24 (tap-hold $tap-time $hold-time a lmet))
           s (multi f24 (tap-hold $tap-time $hold-time s lalt))
           d (multi f24 (tap-hold $tap-time $hold-time d lsft))

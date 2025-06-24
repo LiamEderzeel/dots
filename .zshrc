@@ -35,19 +35,11 @@ source_save $ZDOTDIR/zsh-completion
 # fzf history completion
 source_save ~/.fzf.zsh
 
-if [ -n "${commands[fzf-share]}" ]; then
-  source "$(fzf-share)/key-bindings.zsh"
-  source "$(fzf-share)/completion.zsh"
-fi
-
 # aliases
 source_save $ZDOTDIR/zsh-aliases
 
-
-if exists_in_path exa; then 
-  alias ls='eza --icons=always '
-  export EXA_ICON_SPACING=2; 
-fi
+# env
+source_save ~/.zshenv
 
 # Key-bindings
 autoload -U up-line-or-beginning-search
@@ -66,6 +58,19 @@ if [[ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
+# fzf
+if [ -n "${commands[fzf-share]}" ]; then
+  source "$(fzf-share)/key-bindings.zsh"
+  source "$(fzf-share)/completion.zsh"
+fi
+
+# exa
+if exists_in_path exa; then 
+  alias ls='eza --icons=always '
+  export EXA_ICON_SPACING=2; 
+fi
+
+#nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -85,63 +90,9 @@ docker_remove_unamed_volumes () {
   docker volume ls -q | grep -E '^[0-9a-f]{64}$' | xargs docker volume rm
 }
 
-source_save ~/.zshenv
 
 # zoxide init
-eval "$(zoxide init zsh)"
+if exists_in_path zoxide; then
+  eval "$(zoxide init zsh)"
+fi
 
-_tv_smart_autocomplete() {
-    emulate -L zsh
-    zle -I
-
-    local current_prompt
-    current_prompt=$LBUFFER
-
-    local output
-
-    output=$(tv --autocomplete-prompt "$current_prompt" $*)
-
-
-    if [[ -n $output ]]; then
-        zle reset-prompt
-        RBUFFER=""
-        # add a space if the prompt does not end with one
-        [[ "${current_prompt}" != *" " ]] && current_prompt="${current_prompt} "
-        LBUFFER=$current_prompt$output
-
-        # uncomment this to automatically accept the line
-        # (i.e. run the command without having to press enter twice)
-        # zle accept-line
-    fi
-}
-
-_tv_shell_history() {
-    emulate -L zsh
-    zle -I
-
-    local current_prompt
-    current_prompt=$LBUFFER
-
-    local output
-
-    output=$(tv zsh-history --input "$current_prompt" $*)
-
-
-    if [[ -n $output ]]; then
-        zle reset-prompt
-        RBUFFER=""
-        LBUFFER=$output
-
-        # uncomment this to automatically accept the line
-        # (i.e. run the command without having to press enter twice)
-        # zle accept-line
-    fi
-}
-
-
-zle -N tv-smart-autocomplete _tv_smart_autocomplete
-zle -N tv-shell-history _tv_shell_history
-
-
-bindkey '^T' tv-smart-autocomplete
-bindkey '^R' tv-shell-history

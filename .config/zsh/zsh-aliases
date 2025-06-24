@@ -1,0 +1,21 @@
+
+# Aliases
+alias git-clean="git remote prune origin && git branch --merged | grep -i -v -E 'master|dev'| xargs git branch -d"
+alias configlg='lazygit --work-tree ~ --git-dir ~/.dots'
+alias config='git --git-dir=$HOME/.dots/ --work-tree=$HOME'
+alias tmux="env TERM=xterm-256color tmux"
+alias v='nvim'
+alias lv='(){(export NVIM_APPNAME=lv;export MYVIMRC=~/.config/lazyvim/init.lua;nvim)}'
+alias lvim='~/.local/bin/lvim '
+alias work='cd ~/projects'
+alias lg='lazygit'
+alias ld='lazydocker'
+alias mk="minikube kubectl --"
+alias k="kubectl"
+alias m='minikube'
+alias d='docker'
+alias dc='docker compose'
+alias sudo='sudo '
+# alias p='tmux-booster -d ~/projects/personal -d ~/projects/whas -d ~/projects/hot -d ~/projects/personal/valideer'
+
+alias p='tmux-booster -d ~/projects/personal -d ~/projects/whas -d ~/projects/hot -d ~/projects/hoph -p ~/.nixos'

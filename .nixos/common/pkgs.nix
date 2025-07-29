@@ -7,6 +7,7 @@ let
   themes = pkgs.callPackage  ./configs/sddm-themes.nix {};
   packages = [ 
     inputs.tmux-booster
+    inputs.zen-browser.packages."${system}".specific
   ];
   unstable = with pkgs-unstable; [
     neovim
@@ -38,7 +39,16 @@ let
     networkmanagerapplet
     protonvpn-gui
     postman
+    resources
+    discord
+    ags
+    gjs
     swww
+    openssl
+    sqlitebrowser
+    zip
+    slurp
+    grim
   ];
   stable = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
@@ -75,8 +85,6 @@ let
     eza
     networkmanagerapplet
     btop
-    slurp
-    grim
     nemo-with-extensions   
     vlc
     mpv
@@ -84,6 +92,7 @@ let
     lf
     gwenview
     gcc
+    librsvg
     node2nix
     nixd
     docker

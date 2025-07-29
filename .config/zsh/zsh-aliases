@@ -19,3 +19,7 @@ alias sudo='sudo '
 # alias p='tmux-booster -d ~/projects/personal -d ~/projects/whas -d ~/projects/hot -d ~/projects/personal/valideer'
 
 alias p='tmux-booster -d ~/projects/personal -d ~/projects/whas -d ~/projects/hot -d ~/projects/hoph -p ~/.nixos'
+
+if [ "$TERM" = "xterm-kitty" ]; then
+  alias ssh="kitty +kitten ssh"
+fi

@@ -187,6 +187,12 @@
     exportConfiguration=true;
   };
 
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+
   services.displayManager.sddm = {
     enable = true;
     package = pkgs.libsForQt5.sddm;

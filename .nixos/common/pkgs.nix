@@ -116,7 +116,46 @@ let
     kubernetes-helm
     skaffold
     hyprpanel
+    wireguard-tools
     darktable
+    dig
+    usbutils
+    showmethekey
+    kicad
+    blender
+    freecad
+    
+    (pkgs.runCommand "orca-slicer-wrapped" {
+      nativeBuildInputs = [ pkgs.makeWrapper ];
+      desktopItem = pkgs.makeDesktopItem {
+        name = "OrcaSlicer";
+        desktopName = "Orca Slicer";
+        exec = "orca-slicer";
+        icon = "orca-slicer";
+        genericName = "3D Slicer";
+        categories = [ "3DGraphics" "Application" ];
+      };
+      passAsFile = [ "desktopItem" ];
+    } ''
+      mkdir -p $out/bin
+      makeWrapper ${pkgs.orca-slicer}/bin/orca-slicer $out/bin/orca-slicer \
+        --set XDG_SESSION_TYPE "x11" \
+        --set _EGL_VENDOR_LIBRARY_FILENAMES "/usr/share/glvnd/egl_vendor.d/50_mesa.json" \
+        --set WEBKIT_FORCE_COMPOSITING_MODE "1" \
+        --set WEBKIT_DISABLE_COMPOSITING_MODE "1" \
+        --set WEBKIT_DISABLE_DMABUF_RENDERER "1"
+      # __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json
+      # WEBKIT_FORCE_COMPOSITING_MODE=1 
+      # WEBKIT_DISABLE_COMPOSITING_MODE=1 
+      # WEBKIT_DISABLE_DMABUF_RENDERER=1 
+      # ~/Applications/OrcaSlicer_Linux_AppImage_Ubuntu2404_V2.3.0-dev.AppImage
+      
+      mkdir -p $out/share/applications
+      cp "$(cat $desktopItemPath)"/share/applications/OrcaSlicer.desktop $out/share/applications/
+      
+      mkdir -p $out/share/icons
+      ln -s ${pkgs.orca-slicer}/share/icons/* $out/share/icons/
+    '')
   ];
 in
 {

@@ -15,7 +15,6 @@ let
     spotify
     lazygit
     lazydocker
-    darktable
     obsidian
     librewolf
     fastfetch
@@ -117,6 +116,7 @@ let
     kubernetes-helm
     skaffold
     hyprpanel
+    darktable
   ];
 in
 {

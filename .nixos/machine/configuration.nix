@@ -293,6 +293,8 @@
 
   # List services that you want to enable:
 
+  # fix bin paths
+  services.envfs.enable = true;
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 

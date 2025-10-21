@@ -46,6 +46,8 @@ let
     grim
     teensy-loader-cli
     teensy-udev-rules
+    freecad
+    hyprpanel
   ];
   stable = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
@@ -115,7 +117,6 @@ let
     zoxide
     kubernetes-helm
     skaffold
-    hyprpanel
     wireguard-tools
     darktable
     dig
@@ -123,7 +124,6 @@ let
     showmethekey
     kicad
     blender
-    freecad
     dysk
     
     (pkgs.runCommand "orca-slicer-wrapped" {

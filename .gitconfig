@@ -18,3 +18,5 @@ lg = !"git lg1"
 	updateRefs = true
 
 
+[pull]
+	rebase = true

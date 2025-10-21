@@ -124,6 +124,7 @@ let
     kicad
     blender
     freecad
+    dysk
     
     (pkgs.runCommand "orca-slicer-wrapped" {
       desktopItem = pkgs.makeDesktopItem {

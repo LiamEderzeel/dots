@@ -46,6 +46,8 @@ let
     grim
     teensy-loader-cli
     teensy-udev-rules
+    freecad
+    hyprpanel
   ];
   stable = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
@@ -115,7 +117,6 @@ let
     zoxide
     kubernetes-helm
     skaffold
-    hyprpanel
     wireguard-tools
     darktable
     dig
@@ -123,14 +124,13 @@ let
     showmethekey
     kicad
     blender
-    freecad
+    dysk
     
     (pkgs.runCommand "orca-slicer-wrapped" {
-      nativeBuildInputs = [ pkgs.makeWrapper ];
       desktopItem = pkgs.makeDesktopItem {
         name = "OrcaSlicer";
         desktopName = "Orca Slicer";
-        exec = "orca-slicer";
+        exec = "env GBM_BACKEND=dri ${pkgs.orca-slicer}/bin/orca-slicer %U";
         icon = "orca-slicer";
         genericName = "3D Slicer";
         categories = [ "3DGraphics" "Application" ];
@@ -138,17 +138,6 @@ let
       passAsFile = [ "desktopItem" ];
     } ''
       mkdir -p $out/bin
-      makeWrapper ${pkgs.orca-slicer}/bin/orca-slicer $out/bin/orca-slicer \
-        --set XDG_SESSION_TYPE "x11" \
-        --set _EGL_VENDOR_LIBRARY_FILENAMES "/usr/share/glvnd/egl_vendor.d/50_mesa.json" \
-        --set WEBKIT_FORCE_COMPOSITING_MODE "1" \
-        --set WEBKIT_DISABLE_COMPOSITING_MODE "1" \
-        --set WEBKIT_DISABLE_DMABUF_RENDERER "1"
-      # __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json
-      # WEBKIT_FORCE_COMPOSITING_MODE=1 
-      # WEBKIT_DISABLE_COMPOSITING_MODE=1 
-      # WEBKIT_DISABLE_DMABUF_RENDERER=1 
-      # ~/Applications/OrcaSlicer_Linux_AppImage_Ubuntu2404_V2.3.0-dev.AppImage
       
       mkdir -p $out/share/applications
       cp "$(cat $desktopItemPath)"/share/applications/OrcaSlicer.desktop $out/share/applications/

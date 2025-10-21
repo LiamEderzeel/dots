@@ -293,6 +293,8 @@
 
   # List services that you want to enable:
 
+  # fix bin paths
+  services.envfs.enable = true;
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
@@ -345,4 +347,6 @@
     # Keymapp Flashing rules for the Voyager
     SUBSYSTEMS=="usb", ATTRS{idVendor}=="3297", MODE:="0666", SYMLINK+="ignition_dfu"
   '';
+
+  services.blueman.enable = true;
 }

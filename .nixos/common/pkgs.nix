@@ -21,7 +21,7 @@ let
     ranger
     ueberzugpp
     nodePackages."@antfu/ni"
-    nodejs_20
+    nodejs_22
     pnpm_10
     # corepack_latest
     deno
@@ -48,6 +48,8 @@ let
     teensy-udev-rules
     freecad
     hyprpanel
+    darktable
+    signal-desktop-bin
   ];
   stable = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
@@ -118,7 +120,6 @@ let
     kubernetes-helm
     skaffold
     wireguard-tools
-    darktable
     dig
     usbutils
     showmethekey

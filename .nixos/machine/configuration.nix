@@ -277,11 +277,11 @@
   # };
 
   # Dynamic libraries for unpackaged programs
-  programs.nix-ld.dev.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    glibc
-    libcxx
-  ];
+  # programs.nix-ld.dev.enable = true;
+  # programs.nix-ld.libraries = with pkgs; [
+  #   glibc
+  #   libcxx
+  # ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

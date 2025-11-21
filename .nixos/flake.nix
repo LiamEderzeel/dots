@@ -2,7 +2,7 @@
 {
   description = "multi-machine system flake";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     proxmox-nixos.url = "github:SaumonNet/proxmox-nixos";
     nix-ld.url = "github:Mic92/nix-ld";
@@ -47,7 +47,7 @@
   # };
 
 
-  stateVersion = "24.11"; 
+  stateVersion = "25.05"; 
     username = "liamederzeel"; 
     desktop = "machine"; 
     laptop = "lisa"; 
@@ -82,7 +82,7 @@
             };
           };
 
-          modules = [./${desktop}/configuration.nix nix-ld.nixosModules.nix-ld {nixpkgs.overlays = [inputs.hyprpanel.overlay];}];
+          modules = [./${desktop}/configuration.nix {nixpkgs.overlays = [ inputs.hyprpanel.overlay ];}];
 
           # modules = [./nixos/${desktop}/configuration.nix nixos-boot.nixosModules.default];
         };

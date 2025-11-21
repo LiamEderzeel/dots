@@ -50,6 +50,8 @@ let
     hyprpanel
     darktable
     signal-desktop-bin
+    hyprland 
+    xdg-desktop-portal-hyprland
   ];
   stable = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
@@ -58,7 +60,6 @@ let
     tmux
     git
     openssh
-    hyprland 
     hyprpaper
     waybar
     waypaper
@@ -69,7 +70,6 @@ let
     nautilus
     eog
     xwayland
-    xdg-desktop-portal-hyprland
     xdg-desktop-portal-gtk
     nix-prefetch-git
     libsForQt5.qt5.qtquickcontrols2
@@ -91,7 +91,7 @@ let
     mpv
     kitty
     lf
-    gwenview
+    kdePackages.gwenview
     gcc
     librsvg
     node2nix

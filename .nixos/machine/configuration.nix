@@ -3,7 +3,7 @@
 # export PATH=/run/wrappers/bin /home/r/.nix-profile/bin /etc/profiles/per-user/r/bin /nix/var/nix/profiles/default/bin /run/current-system/sw/bin
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, pkgs-unstable, hostname, username, ... }:
+{ config, pkgs, pkgs-unstable, hostname, username, lib, ... }:
 {
   imports = [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -155,7 +155,7 @@
     # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
     # Only available from driver 515.43.04+
     # Currently alpha-quality/buggy, so false is currently the recommended setting.
-    open = false;
+    open = true;
 
     # Enable the Nvidia settings menu,
 	# accessible via `nvidia-settings`.
@@ -176,12 +176,18 @@
     videoDrivers = ["nvidia"];
     xrandrHeads=[
       {
-        output="DP-2";
-        primary=true;
+        # monitorConfig = ''
+        #   Option "Above" "multihead1"
+        # '';
+        output = "DP-1";
+        # monitorConfig = ''Option "Enable" "false"'';
       }
       {
-        output = "DP-1";
-        monitorConfig = ''Option "Enable" "false"'';
+        output="DP-2";
+        primary=true;
+        # monitorConfig = ''
+        #   Option "Below" "multihead2"
+        # '';
       }
     ];
     exportConfiguration=true;
@@ -250,6 +256,12 @@
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_TYPE = "wayland";
       XDG_SESSION_DESKTOP = "Hyprland";
+      # Use NVIDIA's GBM backend
+      GBM_BACKEND = "nvidia-drm";
+      # Tell GL to use the NVIDIA vendor library
+      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+      # Enable video acceleration via NVIDIA
+      LIBVA_DRIVER_NAME = "nvidia";
     };
     systemPackages = [
       # pkgs-unstable.coolercontrol.coolercontrold

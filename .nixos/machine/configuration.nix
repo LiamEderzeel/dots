@@ -191,6 +191,7 @@
       }
     ];
     exportConfiguration=true;
+    displayManager.sessionCommands = "xrdb ~/xresources";
   };
 
   services.avahi = {

@@ -5,6 +5,19 @@
  ...}:
 let
   themes = pkgs.callPackage  ./configs/sddm-themes.nix {};
+
+  freecadWayland = pkgs.symlinkJoin {
+    name = "freecad-wayland-fix";
+    paths = [ pkgs.freecad-wayland ];
+    buildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      wrapProgram $out/bin/FreeCAD \
+        --set QT_AUTO_SCREEN_SCALE_FACTOR "0" \
+        --set QT_SCALE_FACTOR "1" \
+        --prefix MESA_LOADER_DRIVER_OVERRIDE : zink \
+        --prefix __EGL_VENDOR_LIBRARY_FILENAMES : ${pkgs.mesa}/share/glvnd/egl_vendor.d/50_mesa.json
+    '';
+  };
   packages = [ 
     inputs.tmux-booster
     inputs.zen-browser.packages."${system}".specific
@@ -46,7 +59,6 @@ let
     grim
     teensy-loader-cli
     teensy-udev-rules
-    freecad
     hyprpanel
     darktable
     signal-desktop-bin
@@ -126,6 +138,8 @@ let
     kicad
     blender
     dysk
+    # freecad
+    freecadWayland
     
     (pkgs.runCommand "orca-slicer-wrapped" {
       desktopItem = pkgs.makeDesktopItem {

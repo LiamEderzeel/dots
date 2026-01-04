@@ -75,9 +75,9 @@ let
     hyprpaper
     waybar
     waypaper
-    firefox-wayland 
+    firefox 
     alacritty 
-    rofi-wayland
+    rofi
     keyd
     nautilus
     eog

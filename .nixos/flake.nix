@@ -2,7 +2,7 @@
 {
   description = "multi-machine system flake";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     proxmox-nixos.url = "github:SaumonNet/proxmox-nixos";
     nix-ld.url = "github:Mic92/nix-ld";
@@ -47,7 +47,7 @@
   # };
 
 
-  stateVersion = "25.05"; 
+  stateVersion = "25.11"; 
     username = "liamederzeel"; 
     desktop = "machine"; 
     laptop = "lisa"; 

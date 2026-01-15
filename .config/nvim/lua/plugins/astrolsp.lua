@@ -94,6 +94,7 @@ return {
             return client.supports_method "textDocument/semanticTokens/full" and vim.lsp.semantic_tokens ~= nil
           end,
         },
+        ["<Leader>lR"] = { function() vim.lsp.buf.rename() end, desc = "Rename" },
       },
     },
     -- A custom `on_attach` function to be run after the default `on_attach` function

@@ -14,6 +14,7 @@
       url = "github:MarceColl/zen-browser-flake";
     };
     hyprpanel.url = "github:jas-singhfsu/hyprpanel";
+    hyprland.url = "github:hyprwm/Hyprland";
   };
   outputs = {
     self,

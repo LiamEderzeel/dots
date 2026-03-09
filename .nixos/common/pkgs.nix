@@ -4,7 +4,7 @@
   inputs,
  ...}:
 let
-  themes = pkgs.callPackage  ./configs/sddm-themes.nix {};
+  # themes = pkgs.callPackage  ./configs/sddm-themes.nix {};
 
   freecadWayland = pkgs.symlinkJoin {
     name = "freecad-wayland-fix";
@@ -49,7 +49,6 @@ let
     postman
     resources
     discord
-    ags
     gjs
     swww
     openssl
@@ -61,13 +60,19 @@ let
     teensy-udev-rules
     hyprpanel
     darktable
-    signal-desktop-bin
-    hyprland 
+    signal-desktop
     xdg-desktop-portal-hyprland
+    # kdePackages.qt5compat
+    mgba # gameboy advanced
+    claude-code
+    lsb-release # For mongodb-memory-server 
   ];
   stable = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
+    kdePackages.sddm
+    where-is-my-sddm-theme
+    libsForQt5.qt5.qtgraphicaleffects
     wlr-randr
     tmux
     git
@@ -92,6 +97,7 @@ let
     killall
     pulseaudio
     hyprlock
+    hypridle
     pavucontrol
     wev # xevents to see keyboard and mouse events
     brightnessctl
@@ -115,7 +121,7 @@ let
     python3
     playerctl
     inkscape
-    themes.where-is-my-sddm-theme
+    # themes.where-is-my-sddm-theme
     lua-language-server
     xz
     exfat
@@ -140,6 +146,7 @@ let
     dysk
     # freecad
     freecadWayland
+    libreoffice
     
     (pkgs.runCommand "orca-slicer-wrapped" {
       desktopItem = pkgs.makeDesktopItem {

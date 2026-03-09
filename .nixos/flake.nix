@@ -13,7 +13,6 @@
     zen-browser = {
       url = "github:MarceColl/zen-browser-flake";
     };
-    hyprpanel.url = "github:jas-singhfsu/hyprpanel";
     hyprland.url = "github:hyprwm/Hyprland";
   };
   outputs = {
@@ -83,7 +82,7 @@
             };
           };
 
-          modules = [./${desktop}/configuration.nix nix-ld.nixosModules.nix-ld {nixpkgs.overlays = [ inputs.hyprpanel.overlay ];}];
+          modules = [./${desktop}/configuration.nix nix-ld.nixosModules.nix-ld ];
 
           # modules = [./nixos/${desktop}/configuration.nix nixos-boot.nixosModules.default];
         };

@@ -3,14 +3,19 @@
 # export PATH=/run/wrappers/bin /home/r/.nix-profile/bin /etc/profiles/per-user/r/bin /nix/var/nix/profiles/default/bin /run/current-system/sw/bin
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, pkgs-unstable, hostname, username, lib, ... }:
+{ config, pkgs, username, lib, ... }:
 {
-  imports = [ # Include the results of the hardware scan.
+  imports = [
       ./hardware-configuration.nix
       ../common/pkgs.nix
       ../common/kanata.nix
+      ../common/printer.nix
       ../common/wayland.nix
       ../common/configs/fonts.nix
+      ../common/nvidia.nix
+      ./networking.nix
+      ./audio.nix
+      ./nix-ld.nix
   ];
 
   # Bootloader.
@@ -27,88 +32,13 @@
     options it87 force_id=0x8628
   '';
 
-  # # sound.enable = true;
-  # hardware.pulseaudio = {
-  #   # enable = true;
-  #   support32Bit = true;
-  # };
 
+  systemd.services.display-manager.enable = true;
  # rtkit is optional but recommended
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true; # if not already enabled
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    extraLv2Packages = [ pkgs.rnnoise-plugin ];
-    configPackages = [
-      (pkgs.writeTextDir "share/pipewire/pipewire.conf.d/20-rnnoise.conf" ''
-        context.modules = [
-        {   name = libpipewire-module-filter-chain
-            args = {
-                node.description = "Noise Canceling source"
-                media.name = "Noise Canceling source"
-                filter.graph = {
-                    nodes = [
-                        {
-                            type = lv2
-                            name = rnnoise
-                            plugin = "https://github.com/werman/noise-suppression-for-voice#stereo"
-                            label = noise_suppressor_stereo
-                            control = {
-                            }
-                        }
-                    ]
-                }
-                capture.props = {
-                    node.name =  "capture.rnnoise_source"
-                    node.passive = true
-                }
-                playback.props = {
-                    node.name =  "rnnoise_source"
-                    media.class = Audio/Source
-                }
-            }
-        }
-        ]
-      '')
-    ];
-  };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  networking.hostName = "${hostname}"; 
-  networking.extraHosts = ''
-    127.0.0.1 whas.test
-    127.0.0.1 portal.whas.test
-
-    127.0.0.1 hot.test
-    127.0.0.1 academy.hot.test
-    127.0.0.1 admin.hot.test
-    127.0.0.1 ams.hot.test
-    127.0.0.1 ams2.hot.test
-  '';
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # networking.wireless = {
-  #   enable = true;  # Enables wireless support via wpa_supplicant.
-  #   networks."Netbarry-Home-N".psk = "eTnFMNCbXnh3Egbp";
-  # };
-# Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager = {
-    enable = true;
-    # unmanaged = ["wlp3s0"];
-    wifi = {
-      scanRandMacAddress = false;
-      macAddress = "permanent";
-    };
-  };
 
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
@@ -130,40 +60,12 @@
   services.gvfs.enable = true;
   services.udisks2.enable = true;
 
+
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.sddm.enableGnomeKeyring = true;
 
-   hardware.nvidia = {
+  hardware.xone.enable = true;
 
-    # Modesetting is required.
-    modesetting.enable = true;
-
-    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-    # Enable this if you have graphical corruption issues or application crashes after waking
-    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead 
-    # of just the bare essentials.
-    powerManagement.enable = false;
-
-    # Fine-grained power management. Turns off GPU when not in use.
-    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = false;
-
-    # Use the NVidia open source kernel module (not to be confused with the
-    # independent third-party "nouveau" open source driver).
-    # Support is limited to the Turing and later architectures. Full list of 
-    # supported GPUs is at: 
-    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
-    # Only available from driver 515.43.04+
-    # Currently alpha-quality/buggy, so false is currently the recommended setting.
-    open = true;
-
-    # Enable the Nvidia settings menu,
-	# accessible via `nvidia-settings`.
-    nvidiaSettings = true;
-
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
-  };
 
 
   # Configure keymap in X11
@@ -202,8 +104,23 @@
 
   services.displayManager.sddm = {
     enable = true;
-    package = pkgs.libsForQt5.sddm;
-    theme = "where-is-my-sddm-theme";
+    package = pkgs.kdePackages.sddm;
+    extraPackages = with pkgs; [
+      sddm-astronaut
+      kdePackages.qt5compat
+      kdePackages.qtmultimedia
+    ];
+    theme = "sddm-astronaut-theme";
+    # theme = "${pkgs.sddm-sugar-dark}/share/sddm/themes/sugar-dark";
+
+    settings = {
+      # Theme = {
+      #   Current = "sddm-astronaut-theme";
+      # };
+      # Wayland = {
+      #   CompositorCommand = "start-hyprland";
+      # };
+    };
     wayland = {
       enable = true;
       # Proposal
@@ -238,7 +155,7 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "${username}";
-    extraGroups = [ "networkmanager" "wheel" "audio" "docker" "plugdev" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "docker" "plugdev" "lp" "scanner"];
     packages = with pkgs; [];
   };
   users.defaultUserShell = pkgs.zsh;
@@ -252,17 +169,16 @@
     };
     variables = {
       GDK_SCALE = 2;
+      GDK_BACKEND="wayland";
       GTK_THEME = "Adwaita:dark";
       QT_THEME = "Adwaita:dark"; # not sure if real
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_TYPE = "wayland";
       XDG_SESSION_DESKTOP = "Hyprland";
-      # Use NVIDIA's GBM backend
-      GBM_BACKEND = "nvidia-drm";
-      # Tell GL to use the NVIDIA vendor library
-      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-      # Enable video acceleration via NVIDIA
-      LIBVA_DRIVER_NAME = "nvidia";
+      MONGOMS_PLATFORM = "linux";
+      MONGOMS_DISTRO = "ubuntu-22.04";
+      MONGOMS_VERSION = "7.0.14";
+      MONGOMS_DOWNLOAD_URL = "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu2204-7.0.14.tgz";
     };
     systemPackages = [
       # pkgs-unstable.coolercontrol.coolercontrold
@@ -273,9 +189,17 @@
     ];
   };
 
-  # programs.hyprpanel = {
-  #   enable = true;
-  # };
+  programs.dconf = {
+    enable = true;
+    profiles.user.databases = [{
+      settings = with lib.gvariant; {
+        "org/gnome/desktop/interface" = {
+          color-scheme = "prefer-dark";
+          gtk-theme = "adw-gtk3-dark";
+        };
+      };
+    }];
+  };
 
   programs.coolercontrol.enable = true;
 
@@ -285,17 +209,6 @@
     enable = true;
   };
 
-  # programs.waybar = {
-  #   enable = true;
-  # };
-
-  # Dynamic libraries for unpackaged programs
-  programs.nix-ld.enable = true;
-  programs.nix-ld.dev.enable = false;
-  programs.nix-ld.libraries = with pkgs; [
-    glibc
-    libcxx
-  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -312,11 +225,6 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -363,4 +271,23 @@
   '';
 
   services.blueman.enable = true;
+
+  services.displayManager.sessionPackages = [
+    (pkgs.writeTextFile {
+      name = "hyprland-uwsm-fixed";
+      text = ''
+        [Desktop Entry]
+        Name=Hyprland (UWSM)
+        Comment=Hyprland compositor managed by UWSM
+        Exec=${lib.getExe config.programs.uwsm.package} start -F -- /run/current-system/sw/bin/start-hyprland
+        Type=Application
+        DesktopNames=Hyprland
+        Keywords=tiling;wayland;compositor;
+      '';
+      destination = "/share/wayland-sessions/hyprland-uwsm-fixed.desktop";
+      derivationArgs = {
+        passthru.providedSessions = [ "hyprland-uwsm-fixed" ];
+      };
+    })
+  ];
 }

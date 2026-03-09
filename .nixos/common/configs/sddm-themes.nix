@@ -11,7 +11,7 @@
     };
     installPhase = ''
       mkdir -p $out/share/sddm/themes
-      cp -aR $src/where_is_my_sddm_theme_qt5 $out/share/sddm/themes/where-is-my-sddm-theme
+      cp -aR $src/where_is_my_sddm_theme $out/share/sddm/themes/where-is-my-sddm-theme
     '';
   };
   abstractguts-themes = stdenv.mkDerivation rec {

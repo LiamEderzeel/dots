@@ -66,8 +66,6 @@
 
   hardware.xone.enable = true;
 
-
-
   # Configure keymap in X11
   services.xserver = {
     enable = true;
@@ -187,6 +185,13 @@
       pkgs.vscode
       # pkgs-unstable.dbgate
     ];
+    profileRelativeSessionVariables = {
+      XCURSOR_PATH = [
+        "$HOME/.icons"
+        "$HOME/.local/share/icons"
+        "/run/current-system/sw/share/icons"
+      ];
+    };
   };
 
   programs.dconf = {

@@ -23,13 +23,32 @@
   "theme.bar.buttons.dashboard.icon": "#ffffff",
   "bar.layouts": {
     "0": {
-      "left": ["dashboard", "media", "windowtitle"],
-      "middle": ["workspaces"],
-      "right": ["volume", "clock", "notifications"]
+      "left": [
+        "dashboard",
+        "media",
+        "windowtitle"
+      ],
+      "middle": [
+        "workspaces"
+      ],
+      "right": [
+        "volume",
+        "clock",
+        "notifications"
+      ]
     },
     "1": {
-      "left": ["dashboard", "cpu", "ram", "cputemp", "media", "windowtitle"],
-      "middle": ["workspaces"],
+      "left": [
+        "dashboard",
+        "cpu",
+        "ram",
+        "cputemp",
+        "media",
+        "windowtitle"
+      ],
+      "middle": [
+        "workspaces"
+      ],
       "right": [
         "volume",
         "network",
@@ -40,9 +59,19 @@
       ]
     },
     "2": {
-      "left": ["dashboard", "media", "windowtitle"],
-      "middle": ["workspaces"],
-      "right": ["volume", "clock", "notifications"]
+      "left": [
+        "dashboard",
+        "media",
+        "windowtitle"
+      ],
+      "middle": [
+        "workspaces"
+      ],
+      "right": [
+        "volume",
+        "clock",
+        "notifications"
+      ]
     }
   },
   "bar.customModules.cpu.label": true,
@@ -102,7 +131,9 @@
   "theme.bar.menus.border.size": "0em",
   "theme.bar.menus.opacity": 100,
   "bar.customModules.cpuTemp.sensor": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon3/temp1_input",
-  "bar.customModules.storage.paths": ["/"],
+  "bar.customModules.storage.paths": [
+    "/"
+  ],
   "bar.customModules.ram.labelType": "used",
   "bar.network.label": false,
   "bar.bluetooth.label": false,
@@ -128,5 +159,13 @@
       "color": "#89b4fa"
     }
   },
-  "bar.systray.ignore": ["nm-applet", "blueman"]
+  "bar.systray.ignore": [
+    "nm-applet",
+    "blueman"
+  ],
+  "theme.bar.buttons.windowtitle.enableBorder": false,
+  "bar.windowtitle.custom_title": true,
+  "bar.windowtitle.class_name": true,
+  "bar.windowtitle.label": true,
+  "bar.windowtitle.icon": true
 }

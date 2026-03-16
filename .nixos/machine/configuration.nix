@@ -16,6 +16,7 @@
       ./networking.nix
       ./audio.nix
       ./nix-ld.nix
+      ../common/catppuccin-btop.nix 
   ];
 
   # Bootloader.

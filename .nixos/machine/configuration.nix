@@ -13,6 +13,7 @@
       ../common/wayland.nix
       ../common/configs/fonts.nix
       ../common/nvidia.nix
+      ../common/syncthing.nix
       ./networking.nix
       ./audio.nix
       ./nix-ld.nix

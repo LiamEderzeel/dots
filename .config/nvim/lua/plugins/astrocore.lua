@@ -70,7 +70,20 @@ return {
         -- ["<Leader>o"] = { desc = "Obsidian" },
         ["<Leader>o"] = { function() print "" end, desc = get_icon("Obsidian", 1, true) .. "Obsidian" },
         ["<Leader>of"] = { "<Cmd>ObsidianQuickSwitch<CR>", desc = "Quick switch" },
+        ["<Leader>ob"] = { "<Cmd>ObsidianBacklinks<CR>", desc = "Backlinks" },
+        ["<Leader>ot"] = { "<Cmd>ObsidianToggleCheckbox<CR>", desc = "Toggle checkbox" },
         ["<Leader>z"] = { function() require("zen-mode").toggle() end, desc = "Zen mode" },
+        gd = {
+          function()
+            local ft = vim.bo.filetype
+            if ft == "markdown" then
+              vim.cmd "ObsidianFollowLink"
+            else
+              vim.lsp.buf.definition()
+            end
+          end,
+          desc = "Go to definition / Follow obsidian link",
+        },
 
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus

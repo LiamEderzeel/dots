@@ -40,6 +40,9 @@ let
     deno
     yazi
     rustc 
+    rust-analyzer
+    clippy
+    rustfmt
     cargo 
     television
     fd

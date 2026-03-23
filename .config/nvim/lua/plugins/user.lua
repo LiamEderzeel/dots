@@ -222,6 +222,10 @@ return {
           name = "work",
           path = "~/Documents/obsidian/work",
         },
+        {
+          name = "rogue-trader",
+          path = "~/Documents/obsidian/rogue-trader",
+        },
       },
 
       -- see below for full list of options 👇

@@ -81,8 +81,6 @@ let
     claude-code
     lsb-release # For mongodb-memory-server 
     freetube
-    # bluez
-    # pipewire
     papirus-icon-theme
     bibata-cursors
     glib
@@ -93,10 +91,9 @@ let
     easyeffects
   ];
   stable = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
     kdePackages.sddm
     where-is-my-sddm-theme
+    # themes.where-is-my-sddm-theme
     wlr-randr
     tmux
     git
@@ -142,11 +139,9 @@ let
     python3
     playerctl
     inkscape
-    # themes.where-is-my-sddm-theme
     lua-language-server
     xz
     exfat
-    # gnome.gnome-disk-utility
     gnome-disk-utility
     docker-compose
     unzip

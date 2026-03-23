@@ -6,18 +6,29 @@
 let
   # themes = pkgs.callPackage  ./configs/sddm-themes.nix {};
 
+  orcaSlicerWrapped = pkgs.symlinkJoin {
+    name = "orca-slicer-wrapped";
+    paths = [ pkgs.orca-slicer ];
+    buildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      wrapProgram $out/bin/orca-slicer \
+      --set GBM_BACKEND dri
+    '';
+  };
+
   freecadWayland = pkgs.symlinkJoin {
     name = "freecad-wayland-fix";
     paths = [ pkgs.freecad-wayland ];
     buildInputs = [ pkgs.makeWrapper ];
     postBuild = ''
       wrapProgram $out/bin/FreeCAD \
-        --set QT_AUTO_SCREEN_SCALE_FACTOR "0" \
-        --set QT_SCALE_FACTOR "1" \
-        --prefix MESA_LOADER_DRIVER_OVERRIDE : zink \
-        --prefix __EGL_VENDOR_LIBRARY_FILENAMES : ${pkgs.mesa}/share/glvnd/egl_vendor.d/50_mesa.json
+      --set QT_AUTO_SCREEN_SCALE_FACTOR "0" \
+      --set QT_SCALE_FACTOR "1" \
+      --prefix MESA_LOADER_DRIVER_OVERRIDE : zink \
+      --prefix __EGL_VENDOR_LIBRARY_FILENAMES : ${pkgs.mesa}/share/glvnd/egl_vendor.d/50_mesa.json
     '';
   };
+
   packages = [ 
     inputs.tmux-booster
     inputs.zen-browser.packages."${system}".specific
@@ -70,19 +81,22 @@ let
     claude-code
     lsb-release # For mongodb-memory-server 
     freetube
-    bluez
-    pipewire
+    # bluez
+    # pipewire
     papirus-icon-theme
     bibata-cursors
     glib
+    gsettings-desktop-schemas
+    logseq
+    ladybird
     ripgrep
+    easyeffects
   ];
   stable = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
     kdePackages.sddm
     where-is-my-sddm-theme
-    libsForQt5.qt5.qtgraphicaleffects
     wlr-randr
     tmux
     git
@@ -102,17 +116,14 @@ let
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtgraphicaleffects
     fzf
-    ripgrep
     wl-clipboard
     killall
-    pulseaudio
     hyprlock
     hypridle
     pavucontrol
     wev # xevents to see keyboard and mouse events
     brightnessctl
     eza
-    networkmanagerapplet
     btop
     nemo-with-extensions   
     vlc
@@ -140,7 +151,6 @@ let
     docker-compose
     unzip
     jq
-    weston
     lm_sensors
     gimp
     baobab
@@ -154,34 +164,17 @@ let
     kicad
     blender
     dysk
+    libreoffice
     # freecad
     freecadWayland
-    libreoffice
-    
-    (pkgs.runCommand "orca-slicer-wrapped" {
-      desktopItem = pkgs.makeDesktopItem {
-        name = "OrcaSlicer";
-        desktopName = "Orca Slicer";
-        exec = "env GBM_BACKEND=dri ${pkgs.orca-slicer}/bin/orca-slicer %U";
-        icon = "orca-slicer";
-        genericName = "3D Slicer";
-        categories = [ "3DGraphics" "Application" ];
-      };
-      passAsFile = [ "desktopItem" ];
-    } ''
-      mkdir -p $out/bin
-      
-      mkdir -p $out/share/applications
-      cp "$(cat $desktopItemPath)"/share/applications/OrcaSlicer.desktop $out/share/applications/
-      
-      mkdir -p $out/share/icons
-      ln -s ${pkgs.orca-slicer}/share/icons/* $out/share/icons/
-    '')
+    orcaSlicerWrapped
   ];
 in
 {
-  environment.systemPackages = unstable ++ stable ++ packages ++ 
-  (pkgs.callPackage ./mongodb.nix { inherit pkgs-unstable; })
-;
-
+  environment.systemPackages = builtins.concatLists [
+    unstable
+    stable
+    packages
+    (pkgs.callPackage ./mongodb.nix { inherit pkgs-unstable; })
+  ];
 }

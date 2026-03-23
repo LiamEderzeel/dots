@@ -1,11 +1,5 @@
 { pkgs, ... }:
 {
-  # # sound.enable = true;
-  # hardware.pulseaudio = {
-  #   # enable = true;
-  #   support32Bit = true;
-  # };
-
   services.pipewire = {
     enable = true; # if not already enabled
     alsa.enable = true;

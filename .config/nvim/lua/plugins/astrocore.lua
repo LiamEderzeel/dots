@@ -70,8 +70,9 @@ return {
         -- ["<Leader>o"] = { desc = "Obsidian" },
         ["<Leader>o"] = { function() print "" end, desc = get_icon("Obsidian", 1, true) .. "Obsidian" },
         ["<Leader>of"] = { "<Cmd>ObsidianQuickSwitch<CR>", desc = "Quick switch" },
-        ["<Leader>ob"] = { "<Cmd>ObsidianBacklinks<CR>", desc = "Backlinks" },
+        ["<Leader>ob"] = { "<Cmd>Obsidian backlinks<CR>", desc = "Backlinks" },
         ["<Leader>ot"] = { "<Cmd>ObsidianToggleCheckbox<CR>", desc = "Toggle checkbox" },
+        ["<Leader>ow"] = { "<Cmd>ObsidianWorkspace<CR>", desc = "Switch workspace" },
         ["<Leader>z"] = { function() require("zen-mode").toggle() end, desc = "Zen mode" },
         gd = {
           function()

@@ -17,6 +17,7 @@
       ./networking.nix
       ./audio.nix
       ./nix-ld.nix
+      ../common/noctalia.nix
       ../common/catppuccin-btop.nix 
   ];
 

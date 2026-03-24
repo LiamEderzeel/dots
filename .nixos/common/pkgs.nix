@@ -89,6 +89,8 @@ let
     ladybird
     ripgrep
     easyeffects
+    quickshell
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
   stable = with pkgs; [
     kdePackages.sddm

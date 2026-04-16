@@ -59,7 +59,7 @@ let
     fd
     minikube
     networkmanagerapplet
-    protonvpn-gui
+    proton-vpn
     postman
     resources
     discord
@@ -91,6 +91,8 @@ let
     easyeffects
     quickshell
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+    slack
+    telegram-desktop
   ];
   stable = with pkgs; [
     kdePackages.sddm

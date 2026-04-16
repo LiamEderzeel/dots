@@ -37,7 +37,13 @@ return {
       luasnip.filetype_extend("javascript", { "javascriptreact" })
     end,
   },
-
+  {
+    "greggh/claude-code.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- Required for git operations
+    },
+    config = function() require("claude-code").setup() end,
+  },
   {
     "windwp/nvim-autopairs",
     config = function(plugin, opts)
@@ -213,6 +219,7 @@ return {
       name = "snacks.nvim",
     },
     opts = {
+      legacy_commands = false,
       workspaces = {
         {
           name = "personal",

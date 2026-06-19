@@ -149,7 +149,10 @@
     ];
   };
 
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    package = pkgs.docker_29;
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${username} = {

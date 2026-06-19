@@ -6,15 +6,15 @@
 let
   # themes = pkgs.callPackage  ./configs/sddm-themes.nix {};
 
-  orcaSlicerWrapped = pkgs.symlinkJoin {
-    name = "orca-slicer-wrapped";
-    paths = [ pkgs.orca-slicer ];
-    buildInputs = [ pkgs.makeWrapper ];
-    postBuild = ''
-      wrapProgram $out/bin/orca-slicer \
-      --set GBM_BACKEND dri
-    '';
-  };
+  # orcaSlicerWrapped = pkgs.symlinkJoin {
+  #   name = "orca-slicer-wrapped";
+  #   paths = [ pkgs.orca-slicer ];
+  #   buildInputs = [ pkgs.makeWrapper ];
+  #   postBuild = ''
+  #     wrapProgram $out/bin/orca-slicer \
+  #     --set GBM_BACKEND dri
+  #   '';
+  # };
 
   freecadWayland = pkgs.symlinkJoin {
     name = "freecad-wayland-fix";
@@ -40,11 +40,9 @@ let
     lazygit
     lazydocker
     obsidian
-    librewolf
     fastfetch
     ranger
     ueberzugpp
-    nodePackages."@antfu/ni"
     nodejs_22
     pnpm_10
     # corepack_latest
@@ -64,7 +62,7 @@ let
     resources
     discord
     gjs
-    swww
+    awww
     openssl
     sqlitebrowser
     zip
@@ -85,7 +83,6 @@ let
     bibata-cursors
     glib
     gsettings-desktop-schemas
-    logseq
     ladybird
     ripgrep
     easyeffects
@@ -136,7 +133,7 @@ let
     librsvg
     node2nix
     nixd
-    docker
+    docker_29
     kubectl
     kubeseal
     doctl
@@ -166,7 +163,8 @@ let
     libreoffice
     # freecad
     freecadWayland
-    orcaSlicerWrapped
+    # orcaSlicerWrapped
+    orca-slicer
   ];
 in
 {

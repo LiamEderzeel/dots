@@ -81,7 +81,6 @@ let
     telegram-desktop
     thunderbird
     gajim
-    beekeeper-studio
   ];
   stable = with pkgs; [
     where-is-my-sddm-theme

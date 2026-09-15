@@ -13,7 +13,6 @@
     zen-browser = {
       url = "github:MarceColl/zen-browser-flake";
     };
-    hyprland.url = "github:hyprwm/Hyprland";
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";

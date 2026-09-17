@@ -68,7 +68,7 @@ local menuMedia = "bash ~/.local/bin/media.sh"
 -- inside it runs once, at startup.
 
 hl.on("hyprland.start", function()
-	hl.exec_cmd("QT_SCALE_FACTOR=1 noctalia-shell")
+	hl.exec_cmd("QT_SCALE_FACTOR=1 noctalia")
 	-- hl.exec_cmd("hyprpanel")
 	hl.exec_cmd("nm-applet")
 	hl.exec_cmd("xrdb ~/.Xresources")
@@ -373,3 +373,12 @@ hl.window_rule({
 	-- Start by forcing it to float to see if the window appears.
 	float = true,
 })
+
+hl.layer_rule({
+	match = { namespace = "^noctalia-bar-.*$" },
+	blur = true,
+	ignore_alpha = 0.0,
+})
+
+-- For Noctalia Color templates
+require("noctalia").apply_theme()

@@ -1,0 +1,191 @@
+config_version = 14
+
+[bar.default]
+background_opacity = 0.0
+capsule = true
+center = [ "workspaces" ]
+end = [ "tray", "notifications", "clipboard", "bar", "network", "bluetooth", "volume", "clock" ]
+margin_edge = 3
+margin_ends = 0
+padding = 6
+start = [ "control-center", "temp", "cpu", "ram", "media" ]
+thickness = 32
+
+[control_center]
+background_opacity = 1.0
+hidden_tabs = [ "power" ]
+
+[desktop_widgets]
+schema_version = 2
+widget_order = []
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget]
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@DP-2", "lockscreen-login-box@DP-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 1280.0
+    cy = 1258.0
+    output = "DP-1"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-2"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 1280.0
+    cy = 1258.0
+    output = "DP-2"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-2".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+[plugin_settings."andrewdems/vpn-manager"]
+panel_placement = "floating"
+
+[plugins]
+enabled = [ "andrewdems/vpn-manager" ]
+
+[shell]
+panel_anchor_bar = "default"
+
+    [shell.panel]
+    control_center_placement = "floating"
+    control_center_position = "top_center"
+    wallpaper_placement = "floating"
+
+[theme]
+builtin = "Ayu"
+community_palette = "Heartbox"
+mode = "dark"
+source = "builtin"
+wallpaper_scheme = "m3-content"
+
+    [theme.templates]
+    builtin_ids = [ "gtk4", "hyprland", "qt" ]
+    community_ids = [ "darktable", "rofi" ]
+
+[wallpaper]
+directory = "/home/liamederzeel/Pictures/Wallpapers"
+
+    [wallpaper.automation]
+    enabled = true
+
+    [wallpaper.default]
+    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 17.png"
+
+    [wallpaper.last]
+    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 17.png"
+
+    [wallpaper.monitors.DP-1]
+    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 17.png"
+
+    [wallpaper.monitors.DP-2]
+    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 17.png"
+
+    [[wallpaper.favorite]]
+    builtin_palette = "Ayu"
+    palette_source = "builtin"
+    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 14.png"
+    theme_mode = "dark"
+
+    [[wallpaper.favorite]]
+    builtin_palette = "Ayu"
+    palette_source = "builtin"
+    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 16.png"
+    theme_mode = "dark"
+
+    [[wallpaper.favorite]]
+    builtin_palette = "Ayu"
+    palette_source = "builtin"
+    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 15.png"
+    theme_mode = "dark"
+
+    [[wallpaper.favorite]]
+    builtin_palette = "Ayu"
+    palette_source = "builtin"
+    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 5.png"
+    theme_mode = "dark"
+
+    [[wallpaper.favorite]]
+    builtin_palette = "Ayu"
+    palette_source = "builtin"
+    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 11.png"
+    theme_mode = "dark"
+
+    [[wallpaper.favorite]]
+    builtin_palette = "Ayu"
+    palette_source = "builtin"
+    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 6.png"
+    theme_mode = "dark"
+
+[widget.bar]
+type = "andrewdems/vpn-manager:bar"
+
+[widget.clock]
+format = "{:%d} {:%B} {:%H:%M}"
+
+[widget.control-center]
+glyph = "north-star"
+
+[widget.network]
+show_label = false
+
+[widget.volume]
+show_label = false
+
+[widget.workspaces]
+active_pill_size = 1.2000000000000002
+change_color_on_hover = false
+empty_color = "on_primary"
+occupied_color = "on_primary"

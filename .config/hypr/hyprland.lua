@@ -20,6 +20,7 @@
 ---- MONITORS ----
 ------------------
 -- See https://wiki.hypr.land/configuring/core/monitors/
+local pip = require("pip")
 
 hl.monitor({ output = "", mode = "preferred", position = "auto", scale = "auto" })
 
@@ -284,6 +285,7 @@ hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ to
 hl.bind("CTRL + XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"))
 
 hl.bind("CTRL + SHIFT + 4", hl.dsp.exec_cmd('grim -g "$(slurp)" - | wl-copy -t "image/png"'))
+hl.bind("SUPER+ALT+P", pip.next_monitor, { description = "Move PiP to next monitor" })
 
 ------------------------------
 ---- WINDOWS AND WORKSPACES ----

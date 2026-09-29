@@ -33,7 +33,8 @@ source_save $ZDOTDIR/zsh-prompt
 # completion
 source_save $ZDOTDIR/zsh-completion
 # fzf history completion
-source_save ~/.fzf.zsh
+# source_save ~/.fzf.zsh
+
 
 # aliases
 source_save $ZDOTDIR/zsh-aliases
@@ -90,6 +91,11 @@ docker_remove_unamed_volumes () {
   docker volume ls -q | grep -E '^[0-9a-f]{64}$' | xargs docker volume rm
 }
 
+if exists_in_path tv; then
+  eval "$(tv init zsh)"
+else; 
+  source_save ~/.fzf.zsh
+fi
 
 # zoxide init
 if exists_in_path zoxide; then

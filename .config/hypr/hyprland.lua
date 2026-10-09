@@ -175,6 +175,7 @@ hl.config({
 		explicit_column_widths = "0.5, 1.0",
 	},
 	misc = {
+		vrr = 1,
 		force_default_wallpaper = -1,
 		disable_hyprland_logo = true,
 	},

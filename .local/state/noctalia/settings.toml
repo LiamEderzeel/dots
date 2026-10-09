@@ -4,7 +4,7 @@ config_version = 14
 background_opacity = 0.0
 capsule = true
 center = [ "workspaces" ]
-end = [ "tray", "notifications", "clipboard", "bar", "network", "bluetooth", "volume", "clock" ]
+end = [ "tray", "clipboard", "bar", "status", "network", "bluetooth", "volume", "clock", "notifications" ]
 margin_edge = 3
 margin_ends = 0
 padding = 6
@@ -93,10 +93,18 @@ widget_order = [ "lockscreen-login-box@DP-2", "lockscreen-login-box@DP-1" ]
 [plugin_settings."andrewdems/vpn-manager"]
 panel_placement = "floating"
 
+[plugin_settings."davemhammer/tailscale"]
+admin_url = "https://headplane.lab.liamederzeel.dev/admin"
+manager_position = "auto"
+
+[plugin_settings."rylos/tailnet"]
+panel_placement = "floating"
+
 [plugins]
-enabled = [ "andrewdems/vpn-manager" ]
+enabled = [ "andrewdems/vpn-manager", "rylos/tailnet", "carlocamacho/taildrop", "davemhammer/tailscale" ]
 
 [shell]
+lang = "en"
 panel_anchor_bar = "default"
 
     [shell.panel]
@@ -122,16 +130,16 @@ directory = "/home/liamederzeel/Pictures/Wallpapers"
     enabled = true
 
     [wallpaper.default]
-    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 17.png"
+    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 6.png"
 
     [wallpaper.last]
-    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 17.png"
+    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 6.png"
 
     [wallpaper.monitors.DP-1]
-    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 17.png"
+    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 6.png"
 
     [wallpaper.monitors.DP-2]
-    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 17.png"
+    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 6.png"
 
     [[wallpaper.favorite]]
     builtin_palette = "Ayu"
@@ -180,6 +188,12 @@ glyph = "north-star"
 
 [widget.network]
 show_label = false
+
+[widget.status]
+type = "davemhammer/tailscale:status"
+
+[widget.temp]
+visualization = "none"
 
 [widget.volume]
 show_label = false

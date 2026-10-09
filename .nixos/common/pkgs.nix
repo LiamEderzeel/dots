@@ -4,18 +4,6 @@
   inputs,
  ...}:
 let
-  # themes = pkgs.callPackage  ./configs/sddm-themes.nix {};
-
-  # orcaSlicerWrapped = pkgs.symlinkJoin {
-  #   name = "orca-slicer-wrapped";
-  #   paths = [ pkgs.orca-slicer ];
-  #   buildInputs = [ pkgs.makeWrapper ];
-  #   postBuild = ''
-  #     wrapProgram $out/bin/orca-slicer \
-  #     --set GBM_BACKEND dri
-  #   '';
-  # };
-
   freecadWayland = pkgs.symlinkJoin {
     name = "freecad-wayland-fix";
     paths = [ pkgs.freecad-wayland ];
@@ -64,9 +52,7 @@ let
     darktable
     signal-desktop
     xdg-desktop-portal-hyprland
-    # kdePackages.qt5compat
     mgba # gameboy advanced
-    claude-code
     lsb-release # For mongodb-memory-server 
     freetube
     papirus-icon-theme
@@ -81,10 +67,12 @@ let
     telegram-desktop
     thunderbird
     gajim
+    libation
+    teams-for-linux
+    pgadmin4-desktopmode
   ];
   stable = with pkgs; [
     where-is-my-sddm-theme
-    # themes.where-is-my-sddm-theme
     tmux
     git
     lazygit
@@ -138,7 +126,6 @@ let
     libreoffice
     # freecad
     freecadWayland
-    # orcaSlicerWrapped
     orca-slicer
     gphoto2
     kdePackages.kdenlive
@@ -152,5 +139,6 @@ in
     stable
     packages
     (pkgs.callPackage ./mongodb.nix { inherit pkgs-unstable; })
+    (import ./craft-apps.nix { inherit pkgs; })
   ];
 }

@@ -115,7 +115,6 @@ panel_anchor_bar = "default"
 [theme]
 builtin = "Ayu"
 community_palette = "Heartbox"
-mode = "dark"
 source = "builtin"
 wallpaper_scheme = "m3-content"
 
@@ -130,16 +129,16 @@ directory = "/home/liamederzeel/Pictures/Wallpapers"
     enabled = true
 
     [wallpaper.default]
-    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 6.png"
+    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 19.png"
 
     [wallpaper.last]
-    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 6.png"
+    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 19.png"
 
     [wallpaper.monitors.DP-1]
-    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 6.png"
+    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 19.png"
 
     [wallpaper.monitors.DP-2]
-    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 6.png"
+    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 19.png"
 
     [[wallpaper.favorite]]
     builtin_palette = "Ayu"

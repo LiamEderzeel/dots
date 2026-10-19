@@ -18,6 +18,7 @@ alias dc='docker compose'
 alias sudo='sudo '
 alias df='dysk '
 # alias p='tmux-booster -d ~/projects/personal -d ~/projects/whas -d ~/projects/hot -d ~/projects/personal/valideer'
+alias safe-claude='docker run -it --rm --user "$(id -u):$(id -g)" -e HOME=/home/node -v "$(pwd):/workspace" -v "$HOME/.claude:/home/node/.claude" -v "$HOME/.claude.json:/home/node/.claude.json" -w /workspace node:22 npx -y @anthropic-ai/claude-code'
 
 alias p='tmux-booster -d ~/projects/personal -d ~/projects/whas -d ~/projects/hot -d ~/projects/hoph -p ~/.nixos -p ~/Documents/obsidian'
 

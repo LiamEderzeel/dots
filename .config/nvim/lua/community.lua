@@ -12,6 +12,7 @@ return {
   { import = "astrocommunity.pack.vue" },
   { import = "astrocommunity.pack.nix" },
   { import = "astrocommunity.pack.rust" },
+  { import = "astrocommunity.note-taking.obsidian-nvim" },
   { import = "astrocommunity.colorscheme.catppuccin" },
   { import = "astrocommunity.colorscheme.github-nvim-theme" },
   -- import/override with your plugins folder

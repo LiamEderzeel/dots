@@ -23,12 +23,22 @@ in
 [
   (mkCraftApp {
     pname = "photocraft";
-    version = "0.5.0";
-    hash = "sha256-9U2GOAcFO738/6DWJO9+SdP9QTEMe7Ht5IU29pkp0i8=";
+    version = "0.10.0";
+    hash = "sha256-zRozyXnopdqU3tgddkjnecuAabd+Ssp0PI0XfKUnDXc=";
   })
   (mkCraftApp {
     pname = "vectorcraft";
-    version = "0.7.0";
-    hash = "sha256-9pKPmt9COtChRev+OxQqldPSb1ULBSScIBIUVwH5i2A=";
+    version = "0.13.1";
+    hash = "sha256-lUV7ubSLxjRBJMK/MqEGAGVIqllLG40djKR9UqMOV34=";
+  })
+  (mkCraftApp {
+    pname = "gridcraft";
+    version = "0.8.0";
+    hash = "sha256-lCCWoppTSqJQPp56oYFulS9yUOc9VfjzKv0HdUdhf3c=";
+  })
+  (mkCraftApp {
+    pname = "wordcraft";
+    version = "0.8.0";
+    hash = "sha256-ffezpQFyug7ehaLEuDw2CvkrHDdnyLMMOWPr8F02q5w=";
   })
 ]

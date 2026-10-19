@@ -1,6 +1,6 @@
 
 # Aliases
-alias git-clean="git remote prune origin && git branch --merged | grep -i -v -E 'master|dev'| xargs git branch -d"
+alias git-clean="git fetch --prune origin && git branch --merged main | grep -v -E '^[*+]|^\s*(main|master|dev)$' | xargs -r git branch -d"
 alias configlg='lazygit --work-tree ~ --git-dir ~/.dots'
 alias config='git --git-dir=$HOME/.dots/ --work-tree=$HOME'
 alias tmux="env TERM=xterm-256color tmux"

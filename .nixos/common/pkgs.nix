@@ -70,6 +70,7 @@ let
     libation
     teams-for-linux
     pgadmin4-desktopmode
+    nautilus
   ];
   stable = with pkgs; [
     where-is-my-sddm-theme
@@ -83,7 +84,6 @@ let
     firefox 
     rofi
     keyd
-    nautilus
     eog
     xwayland
     xdg-desktop-portal-gtk

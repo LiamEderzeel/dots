@@ -114,9 +114,14 @@
     };
     variables = {
       GDK_SCALE = 2;
-      GTK_THEME = "Adwaita:dark";
-      QT_THEME = "Adwaita:dark"; # not sure if real
     };
+  };
+
+  programs.dconf = {
+    enable = true;
+    profiles.user.databases = [{
+      settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+    }];
   };
 
   programs.zsh = {

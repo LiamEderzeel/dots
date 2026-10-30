@@ -355,6 +355,35 @@ hl.window_rule({
 	move = "monitor_w-window_w-6 monitor_h-window_h-6",
 })
 
+-- Firefox sets the popup's title after it opens, so a window rule can't match it.
+hl.on("window.title", function(w)
+	if w.class ~= "firefox" or w.floating or not w.title:find("^Extension: %(Bitwarden Password Manager%)") then
+		return
+	end
+
+	-- the browser window the popup was opened from: most recently focused other Firefox window
+	local parent
+	for _, c in ipairs(hl.get_windows()) do
+		if c.class == "firefox" and c.address ~= w.address and c.mapped then
+			if not parent or c.focus_history_id < parent.focus_history_id then
+				parent = c
+			end
+		end
+	end
+	if not parent then
+		return
+	end
+
+	local sel = "address:" .. w.address
+	hl.dispatch(hl.dsp.window.float({ action = "enable", window = sel }))
+	hl.dispatch(hl.dsp.window.resize({ x = 400, y = 600, window = sel }))
+
+	-- measured after floating: the parent re-tiles to full size once the popup leaves the layout
+	local x = parent.at.x + (parent.size.x - w.size.x) / 2
+	local y = parent.at.y + (parent.size.y - w.size.y) / 2
+	hl.dispatch(hl.dsp.window.move({ x = math.floor(x), y = math.floor(y), window = sel }))
+end)
+
 hl.window_rule({
 	name = "windowrule-thunderbird",
 	match = { class = "^(thunderbird)$" },

@@ -21,6 +21,7 @@
       xone
       coolercontrol
       qt-theme
+      zsa-udev
       sops
       ai
       audio

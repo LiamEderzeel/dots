@@ -16,6 +16,7 @@
       mail
       communication
       dev-tools
+      vscode
       docker
       xone
       coolercontrol

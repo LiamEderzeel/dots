@@ -94,10 +94,6 @@
       MONGOMS_VERSION = "7.0.14";
       MONGOMS_DOWNLOAD_URL = "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu2204-7.0.14.tgz";
     };
-    systemPackages = [
-      pkgs.vscode
-      # pkgs-unstable.dbgate
-    ];
     profileRelativeSessionVariables = {
       XCURSOR_PATH = [
         "$HOME/.icons"

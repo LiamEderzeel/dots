@@ -16,6 +16,7 @@
       communication
       dev-tools
       docker
+      xone
       sops
       ai
       audio

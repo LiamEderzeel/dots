@@ -32,8 +32,6 @@
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.sddm.enableGnomeKeyring = true;
 
-  hardware.xone.enable = true;
-
   # Configure keymap in X11
   services.xserver = {
     enable = true;

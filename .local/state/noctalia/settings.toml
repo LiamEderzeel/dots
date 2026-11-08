@@ -129,16 +129,16 @@ directory = "/home/liamederzeel/Pictures/Wallpapers"
     enabled = true
 
     [wallpaper.default]
-    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 19.png"
+    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 5.png"
 
     [wallpaper.last]
-    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 19.png"
+    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 5.png"
 
     [wallpaper.monitors.DP-1]
-    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 19.png"
+    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 5.png"
 
     [wallpaper.monitors.DP-2]
-    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 19.png"
+    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 5.png"
 
     [[wallpaper.favorite]]
     builtin_palette = "Ayu"

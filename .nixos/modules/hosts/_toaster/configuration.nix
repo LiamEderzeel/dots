@@ -15,9 +15,6 @@
   security.rtkit.enable = true;
 
 
-  services.gvfs.enable = true;
-  services.udisks2.enable = true;
-
 
   # Configure keymap in X11
   services.xserver = {
@@ -49,9 +46,7 @@
 
   # services.keyd.enable = true;
 
-  services.flatpak.enable = true;
   
-  services.dbus.enable = true;
   xdg.portal = {
     enable = true;
     extraPortals = [
@@ -104,8 +99,6 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.11"; # Did you read the comment?
-
-  services.blueman.enable = true;
 
   services.displayManager.sessionPackages = [
     (pkgs.writeTextFile {

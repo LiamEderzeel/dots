@@ -35,8 +35,6 @@
     };
   };
 
-  services.gvfs.enable = true;
-  services.udisks2.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -49,7 +47,6 @@
 
   services.keyd.enable = true;
   
-  services.dbus.enable = true;
   xdg.portal = {
     enable = true;
     extraPortals = [

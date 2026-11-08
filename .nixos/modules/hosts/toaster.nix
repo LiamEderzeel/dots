@@ -8,6 +8,7 @@
       printer
       wayland
       sddm
+      desktop-services
       fonts
       nvidia
       syncthing

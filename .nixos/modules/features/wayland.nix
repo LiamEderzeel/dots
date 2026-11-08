@@ -1,7 +1,12 @@
 { ... }:
 {
   flake.modules.nixos.wayland =
-    { pkgs, inputs, ... }:
+    {
+      lib,
+      pkgs,
+      inputs,
+      ...
+    }:
     {
       programs.hyprland = {
         enable = true;
@@ -13,6 +18,10 @@
           enable = true;
         };
       };
+
+      # Hyprland no longer supports being started as `Hyprland` directly
+      programs.uwsm.waylandCompositors.hyprland.binPath =
+        lib.mkForce "/run/current-system/sw/bin/start-hyprland";
 
       nixpkgs.overlays = [
         (_: prev: {

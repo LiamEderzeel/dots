@@ -8,7 +8,6 @@
       printer
       wayland
       sddm
-      hyprland-session
       desktop-services
       fonts
       nvidia

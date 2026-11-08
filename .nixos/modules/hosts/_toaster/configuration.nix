@@ -94,23 +94,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.11"; # Did you read the comment?
-
-  services.displayManager.sessionPackages = [
-    (pkgs.writeTextFile {
-      name = "hyprland-uwsm-fixed";
-      text = ''
-        [Desktop Entry]
-        Name=Hyprland (UWSM)
-        Comment=Hyprland compositor managed by UWSM
-        Exec=${lib.getExe config.programs.uwsm.package} start -F -- /run/current-system/sw/bin/start-hyprland
-        Type=Application
-        DesktopNames=Hyprland
-        Keywords=tiling;wayland;compositor;
-      '';
-      destination = "/share/wayland-sessions/hyprland-uwsm-fixed.desktop";
-      derivationArgs = {
-        passthru.providedSessions = [ "hyprland-uwsm-fixed" ];
-      };
-    })
-  ];
 }

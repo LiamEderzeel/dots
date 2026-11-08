@@ -3,6 +3,9 @@
   flake.modules.nixos.audio =
     { pkgs, ... }:
     {
+      # Lets PipeWire request realtime scheduling
+      security.rtkit.enable = true;
+
       services.pipewire = {
         enable = true; # if not already enabled
         alsa.enable = true;

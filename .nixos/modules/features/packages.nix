@@ -29,26 +29,13 @@
       unstable = with pkgs-unstable; [
         feedr
         obsidian
-        nodejs_22
-        pnpm_10
-        # corepack_latest
-        corepack
-        deno
-        rustc
-        rust-analyzer
-        clippy
-        rustfmt
-        cargo
         television
         fd
         networkmanagerapplet
         proton-vpn
-        postman
         resources
         gjs
         awww
-        openssl
-        sqlitebrowser
         slurp
         grim
         teensy-loader-cli
@@ -67,19 +54,12 @@
         quickshell
         inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
         libation
-        pgadmin4-desktopmode
         nautilus
-        opentofu
         bitwarden-cli
-        direnv
-        powershell
       ];
       stable = with pkgs; [
         where-is-my-sddm-theme
         tmux
-        git
-        lazygit
-        lazydocker
         hyprpaper
         waybar
         waypaper
@@ -89,7 +69,6 @@
         eog
         xwayland
         xdg-desktop-portal-gtk
-        nix-prefetch-git
         libsForQt5.qt5.qtquickcontrols2
         libsForQt5.qt5.qtgraphicaleffects
         fzf
@@ -102,25 +81,13 @@
         vlc
         mpv
         kdePackages.gwenview
-        gcc
         librsvg
-        node2nix
-        nixd
-        docker_29
-        kubectl
-        kubeseal
-        doctl
-        python3
         playerctl
         inkscape
-        lua-language-server
         gnome-disk-utility
-        docker-compose
         jq
         gimp
         baobab
-        kubernetes-helm
-        skaffold
         showmethekey
         kicad
         blender

@@ -14,6 +14,7 @@
       terminal
       mail
       communication
+      dev-tools
       sops
       ai
       audio

@@ -27,7 +27,6 @@
           lazygit
           nix-prefetch-git
           nixd
-          node2nix
           gcc
           python3
           lua-language-server

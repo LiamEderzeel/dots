@@ -392,6 +392,14 @@ hl.window_rule({
 })
 
 hl.window_rule({
+	name = "thunderbird-reminders",
+	match = { class = "^(thunderbird)$", title = "^\\d+ Reminders?$" },
+	float = true,
+	center = true,
+	size = "500 400",
+})
+
+hl.window_rule({
 	name = "screeps-tiling-fix",
 	match = { class = "^(Screeps)$" },
 	tile = true,

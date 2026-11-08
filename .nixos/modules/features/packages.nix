@@ -79,6 +79,7 @@
         eog
         xwayland
         xdg-desktop-portal-gtk
+        adw-gtk3
         libsForQt5.qt5.qtquickcontrols2
         libsForQt5.qt5.qtgraphicaleffects
         fzf

@@ -23,6 +23,7 @@
       qt-theme
       zsa-udev
       steam
+      gnupg
       sops
       ai
       audio

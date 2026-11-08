@@ -25,6 +25,7 @@
       steam
       gnupg
       dconf-dark
+      sensors
       sops
       ai
       audio

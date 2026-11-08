@@ -62,12 +62,6 @@
     displayManager.sessionCommands = "xrdb ~/xresources";
   };
 
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-  };
-
   services.displayManager.sddm = {
     enable = true;
     package = pkgs.kdePackages.sddm;

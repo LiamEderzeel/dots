@@ -71,6 +71,10 @@ let
     teams-for-linux
     pgadmin4-desktopmode
     nautilus
+    opentofu
+    bitwarden-cli
+    direnv
+    powershell
   ];
   stable = with pkgs; [
     where-is-my-sddm-theme
@@ -97,7 +101,6 @@ let
     wev # xevents to see keyboard and mouse events
     brightnessctl
     eza
-    nemo-with-extensions   
     vlc
     mpv
     kdePackages.gwenview

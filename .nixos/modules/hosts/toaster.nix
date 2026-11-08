@@ -18,6 +18,7 @@
       dev-tools
       docker
       xone
+      coolercontrol
       sops
       ai
       audio

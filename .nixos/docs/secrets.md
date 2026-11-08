@@ -13,7 +13,7 @@ Each file is encrypted for two age keys, listed in `.sops.yaml`:
 
 The host key is the machine's SSH *host* key, not your personal `~/.ssh` key.
 
-`modules/features/sops.nix` (the `sops` feature) is listed in `modules/hosts/toaster.nix`. It also builds `sops-install-secrets` with Go 1.26, because sops-nix needs it and nixpkgs 25.11 defaults to 1.25. Remove that override once the default `go` is 1.26 or newer.
+`modules/features/sops.nix` (the `sops` feature) is listed in `modules/hosts/toaster.nix`.
 
 ## Backups
 
@@ -153,5 +153,5 @@ Notes:
 
 - **Can't decrypt when editing:** check that `~/.config/sops/age/keys.txt` exists, or set `SOPS_AGE_KEY_FILE`.
 - **Rebuild says a key doesn't exist in the file:** the name in `modules/features/sops.nix` doesn't match the YAML key.
-- **`go.mod requires go >= 1.26`:** the `sops.package` override in `modules/features/sops.nix` is missing.
+- **`go.mod requires go >= 1.26`:** nixpkgs' default `go` is older than sops-nix needs. Build `sops-install-secrets` with a newer `buildGoModule` (for example `buildGo126Module`) through `sops.package` in `modules/features/sops.nix`. This was needed on nixpkgs 25.11 and not on 26.05.
 - **Never** commit plaintext secrets or paste values into `.nix` files.

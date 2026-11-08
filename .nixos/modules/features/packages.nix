@@ -22,6 +22,16 @@
         '';
       };
 
+      # the webview crashes with a Wayland protocol error on NVIDIA without this
+      orcaSlicer = pkgs.symlinkJoin {
+        name = "orca-slicer-dmabuf-fix";
+        paths = [ pkgs-unstable.orca-slicer ];
+        buildInputs = [ pkgs.makeWrapper ];
+        postBuild = ''
+          wrapProgram $out/bin/orca-slicer --set WEBKIT_DISABLE_DMABUF_RENDERER 1
+        '';
+      };
+
       packages = [
         inputs.tmux-booster
         inputs.zen-browser.packages."${system}".specific
@@ -94,7 +104,7 @@
         libreoffice
         # freecad
         freecadWayland
-        orca-slicer
+        orcaSlicer
         gphoto2
         kdePackages.kdenlive
         chromium

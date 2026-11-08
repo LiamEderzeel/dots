@@ -22,6 +22,7 @@
       coolercontrol
       qt-theme
       zsa-udev
+      steam
       sops
       ai
       audio

@@ -103,18 +103,6 @@
     };
   };
 
-  programs.dconf = {
-    enable = true;
-    profiles.user.databases = [{
-      settings = with lib.gvariant; {
-        "org/gnome/desktop/interface" = {
-          color-scheme = "prefer-dark";
-          gtk-theme = "adw-gtk3-dark";
-        };
-      };
-    }];
-  };
-
   # List services that you want to enable:
 
   # fix bin paths

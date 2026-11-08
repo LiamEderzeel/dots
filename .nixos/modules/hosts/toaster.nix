@@ -24,6 +24,7 @@
       zsa-udev
       steam
       gnupg
+      dconf-dark
       sops
       ai
       audio

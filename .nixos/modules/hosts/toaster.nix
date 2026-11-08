@@ -13,6 +13,7 @@
       tailscale
       terminal
       mail
+      communication
       sops
       ai
       audio

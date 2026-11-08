@@ -27,7 +27,6 @@
         inputs.zen-browser.packages."${system}".specific
       ];
       unstable = with pkgs-unstable; [
-        ferdium
         feedr
         obsidian
         nodejs_22
@@ -46,7 +45,6 @@
         proton-vpn
         postman
         resources
-        discord
         gjs
         awww
         openssl
@@ -56,7 +54,6 @@
         teensy-loader-cli
         teensy-udev-rules
         darktable
-        signal-desktop
         xdg-desktop-portal-hyprland
         mgba # gameboy advanced
         lsb-release # For mongodb-memory-server
@@ -69,12 +66,7 @@
         easyeffects
         quickshell
         inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-        slack
-        telegram-desktop
-        thunderbird
-        gajim
         libation
-        teams-for-linux
         pgadmin4-desktopmode
         nautilus
         opentofu

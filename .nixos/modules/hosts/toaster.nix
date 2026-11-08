@@ -7,6 +7,7 @@
       kanata
       printer
       wayland
+      sddm
       fonts
       nvidia
       syncthing

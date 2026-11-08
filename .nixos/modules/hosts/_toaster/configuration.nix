@@ -29,9 +29,6 @@
   services.udisks2.enable = true;
 
 
-  services.gnome.gnome-keyring.enable = true;
-  security.pam.services.sddm.enableGnomeKeyring = true;
-
   # Configure keymap in X11
   services.xserver = {
     enable = true;
@@ -58,40 +55,6 @@
     ];
     exportConfiguration=true;
     displayManager.sessionCommands = "xrdb ~/xresources";
-  };
-
-  services.displayManager.sddm = {
-    enable = true;
-    package = pkgs.kdePackages.sddm;
-    extraPackages = with pkgs; [
-      sddm-astronaut
-      kdePackages.qt5compat
-      kdePackages.qtmultimedia
-    ];
-    theme = "where_is_my_sddm_theme";
-    # theme = "${pkgs.sddm-sugar-dark}/share/sddm/themes/sugar-dark";
-
-    settings = {
-      # Theme = {
-      #   Current = "sddm-astronaut-theme";
-      # };
-      # Wayland = {
-      #   CompositorCommand = "start-hyprland";
-      # };
-    };
-    wayland = {
-      enable = true;
-      # Proposal
-      # setupScript = ''
-      #   wlr-randr --output DP-1 --off
-      #   wlr-randr --output DP-2 --mode 3840x2160
-      # '';
-    };
-    # setupScript = ''
-    #   #!/bin/sh
-    #   xrandr --output DP-1 --off
-    #   xrandr --output DP-2 --mode 3840x2160
-    # '';
   };
 
   # services.keyd.enable = true;

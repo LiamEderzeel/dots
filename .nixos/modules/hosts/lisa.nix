@@ -5,6 +5,7 @@
       base
       packages
       wayland
+      sddm
       fonts
       { networking.hostName = "lisa"; }
       ./_lisa/hardware.nix

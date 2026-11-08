@@ -47,13 +47,6 @@
     };
   };
 
-  services.displayManager.sddm = {
-    enable = true;
-    package = pkgs.libsForQt5.sddm;
-    theme = "where-is-my-sddm-theme.nix";
-    wayland.enable = true;
-  };
-
   services.keyd.enable = true;
   
   services.dbus.enable = true;

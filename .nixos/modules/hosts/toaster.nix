@@ -20,6 +20,7 @@
       docker
       xone
       coolercontrol
+      qt-theme
       sops
       ai
       audio

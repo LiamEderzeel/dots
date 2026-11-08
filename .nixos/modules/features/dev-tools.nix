@@ -25,15 +25,12 @@
         ++ (with pkgs; [
           git
           lazygit
-          lazydocker
           nix-prefetch-git
           nixd
           node2nix
           gcc
           python3
           lua-language-server
-          docker_29
-          docker-compose
           kubectl
           kubernetes-helm
           kubeseal

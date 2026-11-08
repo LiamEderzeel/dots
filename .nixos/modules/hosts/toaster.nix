@@ -15,6 +15,7 @@
       mail
       communication
       dev-tools
+      docker
       sops
       ai
       audio

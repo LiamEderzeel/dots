@@ -108,17 +108,12 @@
     ];
   };
 
-  virtualisation.docker = {
-    enable = true;
-    package = pkgs.docker_29;
-  };
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${username} = {
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "${username}";
-    extraGroups = [ "networkmanager" "wheel" "audio" "docker" "plugdev" "lp" "scanner" "dialout" "video" "render" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "plugdev" "lp" "scanner" "dialout" "video" "render" ];
     packages = with pkgs; [];
   };
   users.defaultUserShell = pkgs.zsh;

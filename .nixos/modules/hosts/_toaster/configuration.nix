@@ -9,7 +9,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.supportedFilesystems = [ "ntfs" ];
 
   systemd.services.display-manager.enable = true;
  # rtkit is optional but recommended

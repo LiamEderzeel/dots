@@ -26,6 +26,7 @@
       gnupg
       dconf-dark
       sensors
+      ntfs
       sops
       ai
       audio

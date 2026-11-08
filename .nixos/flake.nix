@@ -13,6 +13,10 @@
     zen-browser = {
       url = "github:MarceColl/zen-browser-flake";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,6 +28,7 @@
     nixpkgs-unstable,
     proxmox-nixos,
     nix-ld,
+    sops-nix,
   # nixos-boot,
     ...
   } @ inputs: let
@@ -84,7 +89,7 @@
             };
           };
 
-          modules = [./${desktop}/configuration.nix nix-ld.nixosModules.nix-ld ];
+          modules = [./${desktop}/configuration.nix nix-ld.nixosModules.nix-ld sops-nix.nixosModules.sops ];
 
           # modules = [./nixos/${desktop}/configuration.nix nixos-boot.nixosModules.default];
         };

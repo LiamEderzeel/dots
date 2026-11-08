@@ -17,6 +17,7 @@
       ../common/tailscale.nix
       ../common/terminal.nix
       ../common/mail.nix
+      ../common/sops.nix
       ./networking.nix
       ./audio.nix
       ./nix-ld.nix

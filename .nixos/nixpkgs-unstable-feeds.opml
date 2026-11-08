@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+  <head>
+    <title>NixOS package updates</title>
+  </head>
+  <body>
+    <outline text="nixos-unstable" title="nixos-unstable">
+      <outline type="rss" text="neovim" title="neovim" xmlUrl="https://github.com/NixOS/nixpkgs/commits/nixos-unstable/pkgs/by-name/ne/neovim-unwrapped/package.nix.atom" htmlUrl="https://github.com/NixOS/nixpkgs/commits/nixos-unstable/pkgs/by-name/ne/neovim-unwrapped/package.nix"/>
+      <outline type="rss" text="orca-slicer" title="orca-slicer" xmlUrl="https://github.com/NixOS/nixpkgs/commits/nixos-unstable/pkgs/by-name/or/orca-slicer/package.nix.atom" htmlUrl="https://github.com/NixOS/nixpkgs/commits/nixos-unstable/pkgs/by-name/or/orca-slicer/package.nix"/>
+      <outline type="rss" text="freecad" title="freecad" xmlUrl="https://github.com/NixOS/nixpkgs/commits/nixos-unstable/pkgs/by-name/fr/freecad/package.nix.atom" htmlUrl="https://github.com/NixOS/nixpkgs/commits/nixos-unstable/pkgs/by-name/fr/freecad/package.nix"/>
+      <outline type="rss" text="corepack" title="corepack" xmlUrl="https://github.com/NixOS/nixpkgs/commits/nixos-unstable/pkgs/by-name/co/corepack/package.nix.atom" htmlUrl="https://github.com/NixOS/nixpkgs/commits/nixos-unstable/pkgs/by-name/co/corepack/package.nix"/>
+      <outline type="rss" text="nodejs 22" title="nodejs 22" xmlUrl="https://github.com/NixOS/nixpkgs/commits/nixos-unstable/pkgs/development/web/nodejs/v22.nix.atom" htmlUrl="https://github.com/NixOS/nixpkgs/commits/nixos-unstable/pkgs/development/web/nodejs/v22.nix"/>
+      <outline type="rss" text="firefox" title="firefox" xmlUrl="https://github.com/NixOS/nixpkgs/commits/nixos-unstable/pkgs/applications/networking/browsers/firefox/packages/firefox.nix.atom" htmlUrl="https://github.com/NixOS/nixpkgs/commits/nixos-unstable/pkgs/applications/networking/browsers/firefox/packages/firefox.nix"/>
+      <outline type="rss" text="ladybird" title="ladybird" xmlUrl="https://github.com/NixOS/nixpkgs/commits/nixos-unstable/pkgs/by-name/la/ladybird/package.nix.atom" htmlUrl="https://github.com/NixOS/nixpkgs/commits/nixos-unstable/pkgs/by-name/la/ladybird/package.nix"/>
+      <outline type="rss" text="ferdium" title="ferdium" xmlUrl="https://github.com/NixOS/nixpkgs/commits/nixos-unstable/pkgs/applications/networking/instant-messengers/ferdium/default.nix.atom" htmlUrl="https://github.com/NixOS/nixpkgs/commits/nixos-unstable/pkgs/applications/networking/instant-messengers/ferdium/default.nix"/>
+      <outline type="rss" text="git" title="git" xmlUrl="https://github.com/NixOS/nixpkgs/commits/nixos-unstable/pkgs/by-name/gi/git/package.nix.atom" htmlUrl="https://github.com/NixOS/nixpkgs/commits/nixos-unstable/pkgs/by-name/gi/git/package.nix"/>
+      <outline type="rss" text="hyprland" title="hyprland" xmlUrl="https://github.com/NixOS/nixpkgs/commits/nixos-unstable/pkgs/by-name/hy/hyprland/package.nix.atom" htmlUrl="https://github.com/NixOS/nixpkgs/commits/nixos-unstable/pkgs/by-name/hy/hyprland/package.nix"/>
+    </outline>
+    <outline text="flake inputs" title="flake inputs">
+      <outline type="rss" text="noctalia-shell" title="noctalia-shell releases" xmlUrl="https://github.com/noctalia-dev/noctalia/releases.atom" htmlUrl="https://github.com/noctalia-dev/noctalia/releases"/>
+    </outline>
+  </body>
+</opml>

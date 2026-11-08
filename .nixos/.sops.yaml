@@ -1,0 +1,7 @@
+keys:
+  - &admin age1qmqsvgs5j5t59r52fp4ejffdt2gevngmr7q55rrnxvvq5hvrkqrq50n2yz
+  - &toaster age1rem6c3z7kfqwffxtz62kql6tr4cr46u2qyxjthqs59mmg6rxsghqnpgxxs
+creation_rules:
+  - path_regex: secrets/toaster\.yaml$
+    key_groups:
+      - age: [*admin, *toaster]

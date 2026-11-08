@@ -13,7 +13,7 @@ Each file is encrypted for two age keys, listed in `.sops.yaml`:
 
 The host key is the machine's SSH *host* key, not your personal `~/.ssh` key.
 
-`common/sops.nix` is imported by `toaster/configuration.nix`. It also builds `sops-install-secrets` with Go 1.26, because sops-nix needs it and nixpkgs 25.11 defaults to 1.25. Remove that override once the default `go` is 1.26 or newer.
+`modules/features/sops.nix` (the `sops` feature) is listed in `modules/hosts/toaster.nix`. It also builds `sops-install-secrets` with Go 1.26, because sops-nix needs it and nixpkgs 25.11 defaults to 1.25. Remove that override once the default `go` is 1.26 or newer.
 
 ## Backups
 
@@ -32,7 +32,7 @@ The host key is the machine's SSH *host* key, not your personal `~/.ssh` key.
    my_token: abc123
    ```
 
-2. Declare it in `common/sops.nix` (name must match the YAML key):
+2. Declare it in `modules/features/sops.nix` (name must match the YAML key):
 
    ```nix
    secrets = {
@@ -89,7 +89,7 @@ sops.templates."app.env" = {
          - age: [*admin, *lisa]
    ```
 
-3. Create `secrets/lisa.yaml` with `sops`, add `sops-nix.nixosModules.sops` to that host's modules in `flake.nix`, and import `../common/sops.nix` in its `configuration.nix`.
+3. Create `secrets/lisa.yaml` with `sops`, add the `sops` feature to the host list in `modules/hosts/lisa.nix`.
 
 ## Re-key (reinstall, new host key, new admin key)
 
@@ -152,6 +152,6 @@ Notes:
 ## Troubleshooting
 
 - **Can't decrypt when editing:** check that `~/.config/sops/age/keys.txt` exists, or set `SOPS_AGE_KEY_FILE`.
-- **Rebuild says a key doesn't exist in the file:** the name in `common/sops.nix` doesn't match the YAML key.
-- **`go.mod requires go >= 1.26`:** the `sops.package` override in `common/sops.nix` is missing.
+- **Rebuild says a key doesn't exist in the file:** the name in `modules/features/sops.nix` doesn't match the YAML key.
+- **`go.mod requires go >= 1.26`:** the `sops.package` override in `modules/features/sops.nix` is missing.
 - **Never** commit plaintext secrets or paste values into `.nix` files.

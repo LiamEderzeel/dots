@@ -28,7 +28,7 @@ hl.monitor({ output = "", mode = "preferred", position = "auto", scale = "auto" 
 hl.monitor({
 	output = "desc:LG Electronics LG ULTRAFINE 406NTBK57165",
 	mode = "3840x2160",
-	position = "0x1440",
+	position = "0x-1440",
 	scale = 1.5,
 	transform = 2,
 })

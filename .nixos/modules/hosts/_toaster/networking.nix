@@ -12,8 +12,8 @@
     127.0.0.1 ams2.hot.test
   '';
 
-  networking.nameservers = [ "192.168.1.109" ];
-  networking.networkmanager.insertNameservers = [ "192.168.1.109" ];
+  networking.nameservers = [ "192.168.1.112" ];
+  networking.networkmanager.insertNameservers = [ "192.168.1.112" ];
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary

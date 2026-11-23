@@ -1,4 +1,4 @@
-config_version = 14
+config_version = 20
 
 [bar.default]
 background_opacity = 0.0
@@ -48,7 +48,7 @@ widget_order = [ "lockscreen-login-box@DP-2", "lockscreen-login-box@DP-1" ]
     type = "login_box"
 
         [lockscreen_widgets.widget."lockscreen-login-box@DP-1".settings]
-        background_color = "surface_variant"
+        background_color = "surface_container"
         background_opacity = 0.88
         background_radius = 12.0
         center_password_text = false
@@ -75,7 +75,7 @@ widget_order = [ "lockscreen-login-box@DP-2", "lockscreen-login-box@DP-1" ]
     type = "login_box"
 
         [lockscreen_widgets.widget."lockscreen-login-box@DP-2".settings]
-        background_color = "surface_variant"
+        background_color = "surface_container"
         background_opacity = 0.88
         background_radius = 12.0
         center_password_text = false
@@ -129,16 +129,16 @@ directory = "/home/liamederzeel/Pictures/Wallpapers"
     enabled = true
 
     [wallpaper.default]
-    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 5.png"
+    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 18.png"
 
     [wallpaper.last]
-    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 5.png"
+    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 18.png"
 
     [wallpaper.monitors.DP-1]
-    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 5.png"
+    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 18.png"
 
     [wallpaper.monitors.DP-2]
-    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 5.png"
+    path = "/home/liamederzeel/Pictures/Wallpapers/Palette Wallpaper 5k 18.png"
 
     [[wallpaper.favorite]]
     builtin_palette = "Ayu"

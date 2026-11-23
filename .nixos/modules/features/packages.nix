@@ -44,8 +44,6 @@
         networkmanagerapplet
         proton-vpn
         resources
-        gjs
-        awww
         slurp
         grim
         teensy-loader-cli
@@ -61,7 +59,6 @@
         gsettings-desktop-schemas
         ripgrep
         easyeffects
-        quickshell
         inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
         libation
         nautilus
@@ -70,9 +67,6 @@
       stable = with pkgs; [
         where-is-my-sddm-theme
         tmux
-        hyprpaper
-        waybar
-        waypaper
         firefox
         rofi
         keyd

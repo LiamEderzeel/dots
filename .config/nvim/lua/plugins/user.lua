@@ -1,5 +1,10 @@
 ---@type LazySpec
 return {
+  -- mason maps the `stylua` formatter package to an lspconfig server that doesn't exist
+  {
+    "AstroNvim/astrolsp",
+    opts = { handlers = { stylua = false } },
+  },
 
   -- == Examples of Adding Plugins ==
 
@@ -220,9 +225,19 @@ return {
     picker = {
       name = "snacks.nvim",
     },
-    opts = {
-      legacy_commands = false,
-      workspaces = {
+    opts = function(_, opts)
+      -- astrocommunity sets follow_url_func (deprecated, removed in obsidian.nvim 3.18)
+      opts.follow_url_func = nil
+      opts.follow_img_func = nil
+      -- astrocommunity's version equals the built-in default (frontmatter.func)
+      opts.note_frontmatter_func = nil
+      -- completion now comes from the built-in obsidian-ls LSP server
+      if opts.completion then
+        opts.completion.nvim_cmp = nil
+        opts.completion.blink = nil
+      end
+      opts.legacy_commands = false
+      opts.workspaces = {
         {
           name = "personal",
           path = "~/Documents/obsidian/personal",
@@ -239,9 +254,8 @@ return {
           name = "training-manager-spec",
           path = "~/projects/hot/training-manager-spec",
         },
-      },
-
-      -- see below for full list of options 👇
-    },
+      }
+      return opts
+    end,
   },
 }

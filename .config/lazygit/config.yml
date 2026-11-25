@@ -3,17 +3,17 @@ gui:
   showFileTree: false
   theme:
     optionsTextColor:
-      - '#3b4261'
+      - "#3b4261"
     selectedLineBgColor:
-      - '#3b4261' # set to `default` to have no background colour
+      - "#3b4261" # set to `default` to have no background colour
     activeBorderColor:
       - blue
     inactiveBorderColor:
-      - '#3b4261'
+      - "#3b4261"
 
 git:
   merging:
     args: "--no-ff"
   pull:
     mode: "ff-only" # one of 'merge' | 'rebase' | 'ff-only'
-  branchLogCmd: "git log --graph --date-order --color=always --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all"
+  branchLogCmd: "/Users/liam/.config/lazygit/branch-log.sh"

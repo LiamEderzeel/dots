@@ -8,7 +8,15 @@ alias v='nvim'
 alias lv='(){(export NVIM_APPNAME=lv;export MYVIMRC=~/.config/lazyvim/init.lua;nvim)}'
 alias lvim='~/.local/bin/lvim '
 alias work='cd ~/projects'
-alias lg='lazygit'
+# ~/.config and ~/.nixos are tracked by the bare ~/.dots repo, not their own repo
+unalias lg 2>/dev/null
+lg() {
+  if [[ $PWD == ~/.config(|/*) || $PWD == ~/.nixos(|/*) ]] && ! git rev-parse --git-dir &>/dev/null; then
+    lazygit --work-tree ~ --git-dir ~/.dots "$@"
+    return
+  fi
+  lazygit "$@"
+}
 alias ld='lazydocker'
 alias mk="minikube kubectl --"
 alias k="kubectl"

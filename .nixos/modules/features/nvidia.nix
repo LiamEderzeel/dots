@@ -1,7 +1,7 @@
 { ... }:
 {
   flake.modules.nixos.nvidia =
-    { config, ... }:
+    { config, pkgs, ... }:
     {
       boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
 
@@ -12,7 +12,10 @@
         __GLX_VENDOR_LIBRARY_NAME = "nvidia";
         # Enable video acceleration via NVIDIA
         LIBVA_DRIVER_NAME = "nvidia";
+        NVD_BACKEND = "direct";
       };
+
+      hardware.graphics.extraPackages = [ pkgs.nvidia-vaapi-driver ];
 
       hardware.nvidia = {
 
@@ -29,14 +32,8 @@
         # Experimental and only works on modern Nvidia GPUs (Turing or newer).
         powerManagement.finegrained = false;
 
-        # Use the NVidia open source kernel module (not to be confused with the
-        # independent third-party "nouveau" open source driver).
-        # Support is limited to the Turing and later architectures. Full list of
-        # supported GPUs is at:
-        # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
-        # Only available from driver 515.43.04+
-        # Currently alpha-quality/buggy, so false is currently the recommended setting.
-        open = false;
+        # Open kernel module, recommended by NVIDIA for Turing and newer.
+        open = true;
 
         # Enable the Nvidia settings menu,
         # accessible via `nvidia-settings`.

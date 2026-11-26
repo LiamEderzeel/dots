@@ -16,4 +16,4 @@ git:
     args: "--no-ff"
   pull:
     mode: "ff-only" # one of 'merge' | 'rebase' | 'ff-only'
-  branchLogCmd: "/Users/liam/.config/lazygit/branch-log.sh"
+  branchLogCmd: "sh -c \"$HOME/.config/lazygit/branch-log.sh\""
